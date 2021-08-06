@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "title": "Task 1",
+        "description": "Description 1",
+        "state" : "TD"
+    },
+    {
+        "id":2,
+        "title": "Task 2",
+        "description": "Description 2",
+        "state": "TD"
+    },
+    {
+        "id":3,
+        "title": "Task 3",
+        "description": "Description 2",
+        "state": "IP"
+    },
+    {
+        "id":4,
+        "title": "Task 4",
+        "description": "Description 3",
+        "state": "FZ" 
+    }
+]

@@ -1,41 +1,28 @@
 import React, {Fragment} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {Grid, IconButton} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
-import AddIcon from '@material-ui/icons/Add';
-import TasksCategory from './TasksCategory';
-import {types} from '../../../../types/types'
-import {loadTasks} from '../../../../helpers/loadTasks'
-
-//import dbTask from './db.json';
-
+import AddIcon from '@material-ui/icons/Add'
+import TasksCategory from './TasksCategory'
+import {findTasks} from '../../../../helpers/utils.js'
 
 const styles = makeStyles(theme => ({
     paper:{
         margin: theme.spacing(1),
         padding: theme.spacing(1),
     },
-}));
+}))
 
 export default function Tasks() {
-    const classes = styles();
-    const dispatch = useDispatch();
+    const classes = styles()
 
-    React.useEffect(()=>{
-        async function loadedTasks(){
-            const tasks = await loadTasks();
-            await dispatch(eventLoaded(tasks));
-        }
-        loadedTasks();
-    },[dispatch]);
-    
-    let taskToDo = []
-    let taskInProcess = []
-    let taskFinalized = []
+    const groupActive = useSelector(state=>state.group.groupActive)
+    const tasks = useSelector(state=>state.group.groups)
+    const sortedTask = findTasks(groupActive, tasks)
 
-    taskToDo = useSelector(state=>state.task.tasks.tasksToDo);
-    taskInProcess = useSelector(state=>state.task.tasks.taskInProcess);
-    taskFinalized = useSelector(state=>state.task.tasks.taskFinalized);
+    const taskToDo = sortedTask.tasksToDo ? sortedTask.tasksToDo : []
+    const taskInProcess = sortedTask.taskInProcess ? sortedTask.taskInProcess : []
+    const taskFinalized = sortedTask.taskFinalized ? sortedTask.taskFinalized : []
 
     return (
         <Fragment>
@@ -58,8 +45,3 @@ export default function Tasks() {
         </Fragment>
     )
 }
-
-export const eventLoaded = (tasks)=>({
-    type: types.eventLoaded,
-    payload: tasks
-});

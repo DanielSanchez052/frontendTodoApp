@@ -4,6 +4,7 @@ import {makeStyles} from "@material-ui/styles";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import MenuItem from "./MenuItem";
 import green from '@material-ui/core/colors/green'
+import {useDispatch, useSelector} from 'react-redux';
 
 const styles = makeStyles(theme => ({
     addGroup:{
@@ -14,23 +15,15 @@ const styles = makeStyles(theme => ({
     },
 }));
 
-function ItemsMenu(){
+function ItemsMenu(props){
     const classes = styles();
+    let {groups} = useSelector(groups=>groups);
+    console.log(groups);
+    // groupList.group.map(group=>{
+    //     console.log("1");
+    // });
     return(
-        <List component='nav'>
-            <ListItem 
-                className={classes.addGroup}
-                button>
-                <ListItemIcon>
-                    <AddCircleIcon />
-                </ListItemIcon>
-                <ListItemText  primary="Agregar Grupo"/>
-            </ListItem>
-            <Divider />
-            
-            <MenuItem name='Primero' />
-            <MenuItem name='Segundo' />
-        </List>
+        <h1>Hi</h1>
     )
 }
 

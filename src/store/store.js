@@ -3,7 +3,7 @@ import {TaskReducer} from '../reducers/TaskReducer';
 
 
 const reducers = combineReducers({
-    task:TaskReducer,
+    group:TaskReducer,
 });
 
 export const store =createStore(

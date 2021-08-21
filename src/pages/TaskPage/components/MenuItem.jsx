@@ -1,20 +1,30 @@
 import React, { Fragment } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import { Divider, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import {types} from '../../../types/types';
 
 function MenuItem(props){
-    const {name} = props;
+    const {item} = props;
+    const dispatch = useDispatch();
+
     return(
-        <Fragment>
+        <div onClick={()=>dispatch(groupActive(item.id))}>
             <ListItem button>
                 <ListItemIcon>
                     <AssignmentTurnedInIcon />
                 </ListItemIcon>
-                <ListItemText  primary={name}/>
+                <ListItemText  primary={item.name}/>
             </ListItem>
             <Divider />
-        </Fragment>
+        </div>
     )
 }
+
+const groupActive = (groupId)=>({
+    type: types.groupActive,
+    payload: groupId
+});
+
 
 export default MenuItem;

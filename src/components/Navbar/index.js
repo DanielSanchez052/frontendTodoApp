@@ -1,4 +1,4 @@
-import React,{Fragment} from 'react';
+import React, {Fragment} from 'react'
 import { AppBar, makeStyles, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -8,9 +8,8 @@ const styles = makeStyles(theme => ({
     },
 }));
 
-function NavBar (props){
+function index(props) {
     const classes = styles();
-
     return (
         <Fragment>
             <AppBar position="fixed" className={classes.appBar}>
@@ -32,8 +31,4 @@ function NavBar (props){
     )
 }
 
-
-
-
-
-export default NavBar;
+export default index

@@ -1,9 +1,9 @@
 import {createStore, combineReducers} from 'redux';
-import {TaskReducer} from '../reducers/TaskReducer';
+import {GroupReducer} from '../reducers/GroupReducer';
 
 
 const reducers = combineReducers({
-    group:TaskReducer,
+    group:GroupReducer,
 });
 
 export const store =createStore(

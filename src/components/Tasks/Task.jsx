@@ -31,6 +31,17 @@ function Task(props) {
     const {description} = props;
     const { buttonState } = props;
 
+    const handleButton = (state,action)=>{
+        let currentState=""
+        if(action.forward===false && action.back===true){
+            currentState="TD"
+        }else if(action.forward === false && action.back === false){
+            currentState="IP"
+        }else if (action.forward === true && action.back === false){
+            currentState="ED"
+        }
+    }
+
     return (
         <Fragment>
             <Accordion className={classes.task}>
@@ -52,6 +63,7 @@ function Task(props) {
                         variant="contained"
                         startIcon={<ArrowBackIosIcon />}
                         disabled={buttonState.back}
+                        onClick={()=>{handleButton(buttonState,'B')}}
                     > 
                         Back 
                     </Button>
@@ -72,6 +84,7 @@ function Task(props) {
                         color="primary"
                         endIcon={<ArrowForwardIosIcon />}
                         disabled={buttonState.forward}
+                        onClick={()=>{handleButton(buttonState,'F')}}
                     > 
                         Skip 
                     </Button>

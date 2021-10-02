@@ -1,15 +1,12 @@
-import React from 'react';
-
+import React,{Fragment} from 'react'
 import {
     CssBaseline,
     Hidden,
     makeStyles
 } from '@material-ui/core'
-
-//import theme from '../themeConfig'
-import NavBar from './components/NavBar';
-import SideBar from './components/SideBar';
-import Tasks from './components/Tasks/Tasks'
+import NavBar from '../../components/Navbar';
+import SideBar from '../../components/Sidebar';
+import Tasks from '../../components/Tasks'
 
 const styles = makeStyles(theme=>({
     root: {
@@ -22,14 +19,14 @@ const styles = makeStyles(theme=>({
         padding: theme.spacing(2),
     },
 }));
-function PageBase(){
+
+function index() {
     const classes = styles();
     const [drawerOpen, setDrawerOpen] = React.useState(false);
 
     const handleOpenDrawer = () => {
         setDrawerOpen(!drawerOpen);
     }
-
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -53,7 +50,7 @@ function PageBase(){
                 <Tasks />
             </div>
         </div>
-    );
+    )
 }
 
-export default PageBase;
+export default index

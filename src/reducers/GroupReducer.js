@@ -1,4 +1,4 @@
-import {types} from '../types/types';
+import { types } from "../types/types";
 
 // const initialState={
 //     // {
@@ -9,19 +9,19 @@ import {types} from '../types/types';
 //     // }
 // }
 
-export const TaskReducer = (state={},action)=>{
-        switch (action.type) {
+export const GroupReducer = (state = {}, action) => {
+    switch (action.type) {
         case types.eventLoaded:
             return {
                 ...state,
-                'groups':[...action.payload]
-            }
+                groups: [...action.payload],
+            };
         case types.groupActive:
             return {
                 ...state,
-                'groupActive':action.payload
-            }
+                groupActive: action.payload,
+            };
         default:
             return state;
     }
-}
+};
